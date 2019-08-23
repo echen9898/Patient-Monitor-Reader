@@ -1,0 +1,175 @@
+
+Plain text log of all models trained, with associated parameters and architectures
+listed in detail.
+
+
+--------------------- MNIST ---------------------
+
+1) model_1.h5:
+    - training: 
+        * batch_size = 128
+        * num_classes = 10
+        * epochs = 12
+        * shuffle = False
+    - training data:
+        * gray scale images
+        * no augmentation
+    - performance:
+        * 99% test accuracy
+        * decent detection on simulated patient monitor, but not great
+
+2) model_2.h5:
+    - training:
+        * batch_size = 128
+        * num_classes = 10
+        * epochs = 12
+        * shuffle = False
+    - training data:
+        * gray scale images
+        * width_shift = 0.2
+        * height_shift = 0.2
+        * zoom = 0.2
+    - performance:
+        * 99% test accuracy
+        * better than model_1.h5, but still lacking/not good enough
+          on simulated patient monitor
+
+3) model_3.h5:
+    - training:
+        * batch_size = 128
+        * num_classes = 10
+        * epochs = 12
+        * shuffle = False
+    - training data:
+        * gray scale images
+        * width_shift = 0.3
+        * height_shift = 0.3
+        * zoom = 0.3
+    - performance:
+        * 99% test accuracy
+        * similar to model_2.h5 (maybe better?), but still misses numbers
+          on simulated patient monitor
+
+4) model_4.h5:
+    - training:
+        * batch_size = 128
+        * num_classes = 10
+        * epochs = 12
+        * shuffle = False
+    - training data:
+        * gray scale images
+        * width_shift = 0.3
+        * height_shift = 0.3
+        * zoom = 0.2
+        * shear_range = 0.2
+    - performance:
+        * 99% test accuracy
+        * might be worse than either model_2 or model_3
+
+5) model_5.h5:
+    - training:
+        * batch_size = 128
+        * num_classes = 10
+        * epochs = 12
+        * shuffle = False
+    - training data:
+        * gray scale images
+        * pad each side by a random value from 5 to 15 pixels
+        * threshold for augmentation is 0.5 (half the data is modified)
+    - performance:
+        * 98.99%
+        * works the best so far! Able to recognize all digits on patient simulator 
+          including the smaller ones. However, still confuses 1's for 7's. Also messes
+          up on 6's sometimes.
+
+6) model_6.h5:
+    - training:
+        * batch_size = 128
+        * num_classes = 10
+        * epochs = 12
+        * shuffle = False
+    - training data:
+        * gray scale images
+        * pad each side by a random value from 5 to 15 pixels
+        * threshold for augmentation is 0.3 (more than half the data is modified)
+    - performance:
+        * 98.77%
+        * worse performance than model_5 -> still confuses 1's as 7's, and messes up 6's.
+
+7) model_7.h5:
+    - training:
+        * batch_size = 128
+        * num_classes = 10
+        * epochs = 12
+        * shuffle = True
+    - training data:
+        * gray scale images
+        * pad each side by a random value from 5 to 15 pixels
+        * threshold for augmentation is 0.3 (more than half the data is modified)
+    - performance:
+        * 98.97%
+        * worse performance than model_5 -> still confuses 1's as 7's, and messes up 6's. 
+
+8) model_8.h5:
+    - training:
+        * batch_size = 128
+        * num_classes = 10
+        * epochs = 12
+        * shuffle = True
+    - training data:
+        * gray scale images
+        * pad each side by a random value from 5 to 15 pixels
+        * threshold for augmentation is 0.5 (more than half the data is modified)
+    - performance:
+        * 99.01%
+        * worse performance than model_5 -> still confuses 1's as 7's, and messes up 6's. 
+
+9) model_9.h5:
+    - training:
+        * batch_size = 32
+        * num_classes = 10
+        * epochs = 20
+        * shuffle = True
+    - training data:
+        * gray scale images
+        * half the data is original (60000), half is augmented with padding (60000)
+        * padding is applied on each side by adding a random value from 5 to 15 pixels
+    - performance:
+        * 98.83%
+        * performs much worse than model_5 -> confuses 1's and 7's still, but also confuses
+          8's as 0's. Weird.
+
+
+--------------------- Chars74 ---------------------
+
+1) model_1.h5:
+    - training:
+        * batch_size = 32
+        * num_classes = 10
+        * epochs = 20
+        * shuffled = True
+    - training data:
+        * 9:1 training/testing split on 11168 total images
+        * black and white images
+        * no augmentations
+    - performance:
+        * 99.10%
+        * performs better than mnist models 1-9! Successfully recognizes all digits (including 6's), still messes
+          up on 1's -> sees them as 3's and 5's.
+
+
+--------------------- Google Digits ---------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
